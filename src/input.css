@@ -2,17 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Inter", sans-serif;
+@layer base {
+  body {
+    @apply bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200;
+    font-family: "Inter", sans-serif; /* Keep existing font-family as Inter is preferred */
+  }
+  /* Ensure html also has the font for consistency, and it can be inherited by body */
+  html {
+    font-family: theme('fontFamily.sans');
+  }
 }
 
+/* Styling for the header when it's scrolled */
 .navbar-fixed {
-  @apply fixed z-[9999] bg-white bg-opacity-70 backdrop-blur-sm dark:bg-dark dark:bg-opacity-50;
-  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  /* Apply background opacity and backdrop blur for the "sticky scroll" effect */
+  /* The base background colors (bg-neutral-100 dark:bg-neutral-800) are on the header itself */
+  @apply bg-neutral-100/80 dark:bg-neutral-800/80; /* Added /80 for opacity */
+  @apply backdrop-blur-sm;
+  /* box-shadow could be added here if different from the default header shadow, or rely on header's shadow-md */
+  /* The original box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2); is removed in favor of header's default shadow-md */
 }
 
 .hamburger-line {
-  @apply my-2 block h-[2px] w-[30px] bg-dark dark:bg-white;
+  @apply my-2 block h-[2px] w-[30px] bg-neutral-800 dark:bg-neutral-100; /* Updated to use neutral palette */
 }
 
 .hamburger-active > span:nth-child(1) {
