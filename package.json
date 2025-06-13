@@ -1,18 +1,38 @@
 {
   "name": "portfolio-tailwindcss",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Modern portfolio website built with Tailwind CSS",
+  "main": "index.html",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "dev": "start-dev.bat",
+    "dev:simple": "echo \"Server URL: http://localhost:8000\" && python -m http.server 8000",
+    "dev:watch": "tailwindcss --input ./src/input.css --output ./dist/output.css --watch",
+    "build": "npm run build:css && npm run build:assets",
+    "build:css": "tailwindcss --input ./src/input.css --output ./dist/output.css --minify",
+    "build:assets": "node build.js",
+    "css:build": "tailwindcss --input ./src/input.css --output ./dist/output.css",
+    "css:watch": "tailwindcss --input ./src/input.css --output ./dist/output.css --watch",
+    "serve": "python -m http.server 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "portfolio",
+    "tailwindcss",
+    "web-development",
+    "responsive",
+    "modern"
+  ],
+  "author": "M Rivan Sahronie <mrivans2002@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
+    "concurrently": "^9.1.2",
+    "live-server": "^1.2.2",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "tailwindcss": "^3.1.4"
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "aos": "^2.3.4"
   }
 }
